@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
-import { UsersService } from 'src/users/users.service';
+import { UsersService } from '@/users/users.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
-import { PrismaService } from 'src/prisma.service';
-import { jwtConstants } from './constants';
-import { ErrorFunction } from 'src/error.service';
+import { PrismaService } from '@/prisma.service';
+import { jwtConstants } from '@/auth/constants';
+import { ErrorFunction } from '@/error.service';
 // import { REQUEST } from '@nestjs/core';
 // import { Request } from 'express';
 

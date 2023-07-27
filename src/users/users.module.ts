@@ -1,11 +1,10 @@
 import { Module } from '@nestjs/common';
-import { PrismaService } from 'src/prisma.service';
-import { UsersService } from './users.service';
-import { AuthService } from 'src/auth/auth.service';
-import { UsersController } from './users.controller';
-import { JwtStrategy } from 'src/auth/strategy/jwt.strategy';
+import { PrismaService } from '@/prisma.service';
+import { UsersService } from '@/users/users.service';
+import { AuthService } from '@/auth/auth.service';
+import { UsersController } from '@/users/users.controller';
 import { JwtService } from '@nestjs/jwt';
-import { ErrorFunction } from 'src/error.service';
+import { ErrorFunction } from '@/error.service';
 
 @Module({
   imports: [],
