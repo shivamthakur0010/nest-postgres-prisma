@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
-import { ErrorFunction } from '@/error.service';
-import { PrismaService } from '@/prisma.service';
+import { ErrorFunction } from '../error.service';
+import { PrismaService } from '../prisma.service';
 
 @Injectable()
 export class UsersService {
