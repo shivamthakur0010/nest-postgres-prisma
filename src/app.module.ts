@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { moduleArray } from '@/moduleArray';
+import { moduleArray } from './moduleArray';
 import { PrismaService } from '@/prisma.service';
 import { ErrorFunction } from '@/error.service';
 
