@@ -5,7 +5,7 @@ import { ApiBearerAuth, ApiBody, ApiTags } from '@nestjs/swagger/dist';
 import { UsersSignUpDto, UsersLoginDto } from './dto/users.dto';
 import { JwtAuthGuard } from 'src/auth/guards/jwt-auth.guard';
 import { UsersService } from './users.service';
-import { RelationError } from 'ErrFunction';
+import { RelationError } from 'src/ErrFunction';
 
 @ApiTags('Auth')
 @Controller('auth')

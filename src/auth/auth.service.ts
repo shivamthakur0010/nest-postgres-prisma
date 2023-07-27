@@ -4,7 +4,7 @@ import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma.service';
 import { jwtConstants } from './constants';
-import { RelationError } from 'ErrFunction';
+import { RelationError } from 'src/ErrFunction';
 // import { REQUEST } from '@nestjs/core';
 // import { Request } from 'express';
 
@@ -14,8 +14,8 @@ export class AuthService {
     private usersService: UsersService,
     private readonly jwtService: JwtService,
     private readonly prisma: PrismaService,
-    // @Inject(REQUEST) private req: Request
-  ) {}
+  ) // @Inject(REQUEST) private req: Request
+  {}
 
   async validateUser(email: string, pass: string): Promise<any> {
     try {
