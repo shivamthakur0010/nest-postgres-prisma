@@ -1,16 +1,16 @@
 import { Injectable } from '@nestjs/common';
-import { RelationError } from 'src/ErrFunction';
+import { ErrorFunction } from 'src/error.service';
 import { PrismaService } from 'src/prisma.service';
 
 @Injectable()
 export class UsersService {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService, private readonly errorFunction:ErrorFunction) {}
 
   async findUserByEmail(email: string) {
     try {
       return this.prisma.user.findUnique({ where: { email } });
     } catch (error) {
-      throw RelationError(error);
+      throw this.errorFunction.RelationError(error)
     }
   }
 
@@ -18,7 +18,7 @@ export class UsersService {
     try {
       return this.prisma.user.findMany();
     } catch (error) {
-      throw RelationError(error);
+      throw this.errorFunction.RelationError(error)
     }
   }
   async meData(userData) {
@@ -34,7 +34,7 @@ export class UsersService {
       const { password, ...result } = data;
       return result;
     } catch (error) {
-      throw RelationError(error);
+      throw this.errorFunction.RelationError(error)
     }
   }
 }

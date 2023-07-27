@@ -7,9 +7,10 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { JwtStrategy } from './strategy/jwt.strategy';
 import { PrismaService } from 'src/prisma.service';
+import { ErrorFunction } from 'src/error.service';
 @Module({
   imports: [UsersModule, PassportModule, JwtModule.register({})],
-  providers: [AuthService, LocalStrategy, JwtStrategy, PrismaService],
+  providers: [AuthService, LocalStrategy, JwtStrategy, PrismaService, ErrorFunction],
   exports:[AuthService]
 })
 export class AuthModule {}

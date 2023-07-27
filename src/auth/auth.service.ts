@@ -1,10 +1,10 @@
-import { Inject, Injectable } from '@nestjs/common';
+import { Injectable } from '@nestjs/common';
 import { UsersService } from 'src/users/users.service';
 import * as bcrypt from 'bcrypt';
 import { JwtService } from '@nestjs/jwt';
 import { PrismaService } from 'src/prisma.service';
 import { jwtConstants } from './constants';
-import { RelationError } from 'src/ErrFunction';
+import { ErrorFunction } from 'src/error.service';
 // import { REQUEST } from '@nestjs/core';
 // import { Request } from 'express';
 
@@ -14,6 +14,7 @@ export class AuthService {
     private usersService: UsersService,
     private readonly jwtService: JwtService,
     private readonly prisma: PrismaService,
+    private readonly errorFunction:ErrorFunction
   ) // @Inject(REQUEST) private req: Request
   {}
 
@@ -27,7 +28,7 @@ export class AuthService {
       }
       return null;
     } catch (error) {
-      throw RelationError(error);
+      throw this.errorFunction.RelationError(error);
     }
   }
 
@@ -44,7 +45,7 @@ export class AuthService {
       });
       return access_token;
     } catch (error) {
-      throw RelationError(error);
+      throw this.errorFunction.RelationError(error);
     }
   }
   async signup(userData: any) {
@@ -64,7 +65,7 @@ export class AuthService {
       }
       return this.login(user);
     } catch (error) {
-      throw RelationError(error);
+      throw this.errorFunction.RelationError(error);
     }
   }
 }
